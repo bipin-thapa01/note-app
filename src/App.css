@@ -1,7 +1,6 @@
 body{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background-color: hsla(0, 16%, 7%, 0.965);
   color: white;
   font-family: sans-serif;
@@ -110,7 +109,6 @@ nav a{
 }
 
 .main1{
-  border-right: 2px solid white;
   width: 300px;
   
 }
@@ -133,4 +131,22 @@ nav a{
 
 .main2{
   width: calc(100vw - 300px);
+}
+
+.cards{
+  height: auto;
+  width: calc(100vw - 332px);
+  display: flex;
+  column-gap: 8px;
+  row-gap: 8px;
+  padding: 5px 15px;
+  flex-wrap: wrap;
+  border-left: 2px solid white;
+}
+
+.card{
+  border: 1px solid gray;
+  width: 389px;
+  height: 300px;
+  border-radius: 15px;
 }

@@ -10,6 +10,17 @@ function Note(){
 
   let cancelNote = () =>{
     document.querySelector('.add-note').style.display = 'none';
+    document.querySelector('.main2').style.filter = 'blur(0px)';
+    document.querySelector('.note-title').value = '';
+    document.querySelector('.note-content').value = '';
+  }
+
+  function formatTime(time){
+    let year = time.getFullYear();
+    let month = time.getMonth() + 1;
+    let date = time.getDate();
+    date = date < 10 ? '0'+ date : date;
+    return (year + '/' + month + '/' + date);
   }
 
   let addNote = () =>{
@@ -17,18 +28,24 @@ function Note(){
     document.querySelector('.main2').style.filter = 'blur(0px)';
     let noteTitle = document.querySelector('.note-title').value;
     let noteContent = document.querySelector('.note-content').value;
+    let noteAddTime = new Date;
+    noteAddTime = formatTime(noteAddTime);
     let contentObj = {
       title: noteTitle,
-      content: noteContent
+      content: noteContent,
+      time: noteAddTime,
     };
     setNote(n => [...n, contentObj]);
+    document.querySelector('.note-title').value = '';
+    document.querySelector('.note-content').value = '';
   }
 
-  let noteList = note.map((e) =>{
+  let noteList = note.map((e,i) =>{
     return(
-      <div>
+      <div className='card' key={i}>
         <div>Tile: {e.title}</div>
         <div>Content: {e.content}</div>
+        <div>Time : {e.time}</div>
       </div>
     );
   })
@@ -48,7 +65,9 @@ function Note(){
           <button onClick={addNotePopUp}>Add Note</button>
         </div>
         <div className='main2'>
-          {noteList}
+          <div className='cards'>
+            {noteList}
+          </div>
         </div>
       </div>
     </>
