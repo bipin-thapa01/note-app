@@ -39,16 +39,21 @@ function Note(){
     document.querySelector('.note-title').value = '';
     document.querySelector('.note-content').value = '';
   }
-
-  let noteList = note.map((e,i) =>{
-    return(
-      <div className='card' key={i}>
-        <div>Tile: {e.title}</div>
-        <div>Content: {e.content}</div>
-        <div>Time : {e.time}</div>
-      </div>
-    );
-  })
+  let noteList;
+  if(note.length>0){
+    noteList = note.map((e,i) =>{
+      return(
+        <div className='card' key={i}>
+          <div className='title'>TITLE: {e.title}</div>
+          <div className='content'>{e.content}</div>
+          <div className='time'>Date : {e.time}</div>
+        </div>
+      );
+    })
+  }
+  else{
+    noteList = <h1 className='empty-note'>Enter notes to display here...</h1>;
+  }
 
    return (
     <>
