@@ -141,6 +141,11 @@ nav a{
   background-color: hsla(120, 83%, 39%, 0.657);
 }
 
+.main1 .empty-note{
+  text-align: center;
+  color: rgb(168, 168, 255);
+}
+
 .main1 .cards{
   border-top: 2px solid gray;
   width: 400px;
@@ -171,6 +176,11 @@ nav a{
   height: 100px;
   position: relative;
   cursor: pointer;
+}
+
+.cards-holder .card:hover{
+  background-color: hsla(229, 21%, 16%, 0.965);
+  transform: scale(1.01);
 }
 
 .card .title{
@@ -215,10 +225,14 @@ nav a{
   border-left: 1px solid white;
 }
 
+.main2 .empty-container{
+  text-align: center;
+}
+
 .main2-card{
   padding: 10px 0 0 0;
-  display: flex;
   flex-direction: column;
+  display: flex;
 }
 
 .main2-card-title{
@@ -237,8 +251,9 @@ nav a{
   height: 40px;
   background-color: transparent;
   border: 0;
+  width: 1386px;
   color: white;
-  font-size: 40px;
+  font-size: 35px;
   outline: none;
 }
 
@@ -246,6 +261,7 @@ nav a{
   display: flex;
   flex-direction: column;
   padding: 10px 0 0 10px;
+  border-bottom: 2px solid gray;
 }
 
 .main2-card-content span{
@@ -267,4 +283,48 @@ nav a{
   text-align: justify;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.main2-card .view-buttons-container{
+  display: flex;
+  column-gap: 40px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-buttons-container button{
+  width: 60px;
+  height: 35px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+}
+
+.view-buttons-container .edit-button{
+  background-color: rgb(69, 69, 228);
+}
+
+.view-buttons-container .edit-button:hover{
+  background-color: rgb(39, 39, 126);
+}
+
+.view-buttons-container .save-button{
+  display: none;
+  background-color: rgb(0, 95, 0);
+}
+
+.view-buttons-container .save-button:hover{
+  background-color: rgb(0, 65, 0);
+}
+
+.view-buttons-container .delete-button{
+  background-color: rgb(126, 0, 0);
+}
+
+.view-buttons-container .delete-button:hover{
+  background-color: rgb(77, 0, 0);
 }

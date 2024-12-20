@@ -2,7 +2,13 @@ import React, {useState} from 'react';
 
 function Note(){
   let [note, setNote] = useState([]);
-  let [view, setView] = useState();
+  let [view, setView] = useState(
+    <h1 className='empty-container'>
+      Click on the notes to display here!
+    </h1>
+  );
+  let title = '';
+  let content = '';
 
   let addNotePopUp = () =>{
     document.querySelector('.add-note').style.display = 'flex';
@@ -23,6 +29,7 @@ function Note(){
     date = date < 10 ? '0'+ date : date;
     return (year + '/' + month + '/' + date);
   }
+
   let addNote = () =>{
     let d = true;
     let noteTitle = document.querySelector('.note-title').value;
@@ -50,22 +57,60 @@ function Note(){
     document.querySelector('.note-content').value = '';
   }
 
+  let editNote = () =>{
+    document.querySelector(`.edit-button`).style.display = 'none';
+    document.querySelector(`.save-button`).style.display = 'block';
+    document.querySelector(`.title-text`).readOnly = false;
+    document.querySelector(`.content-text`).readOnly = false;
+  }
+
+  let saveNote = (index) =>{
+    document.querySelector(`.edit-button`).style.display = 'block';
+    document.querySelector(`.save-button`).style.display = 'none';
+    document.querySelector(`.title-text`).readOnly = true;
+    document.querySelector(`.content-text`).readOnly = true;
+    let newNote = [...note];
+    newNote[index].title = document.querySelector('.title-text').value;
+    newNote[index].content = document.querySelector('.content-text').value;
+    setNote(newNote);
+  }
+
+  let deleteNote = (index) =>{
+    let newNote = note.filter((_,i)=> i!==index);
+    setNote(newNote);
+    setView(<h1 className='empty-container'>
+      Click on the notes to display here!
+    </h1>);
+  }
+
+  let changeTitle = (e,index) =>{
+    title = e.target.value;
+    viewCard(index);
+  }
+
+  let changeContent = (e,index) =>{
+    content = e.target.value;
+    viewCard(index);
+  }
+
   let viewCard = (index) =>{
-    console.log(`hi${index}`);
-    let t = document.querySelector(`.title${index} p`).innerText;
-    let c = document.querySelector(`.content${index} p`).innerText;
     setView(<div className='main2-card'>
       <div className='main2-card-title'>
         <span>
           Title:
         </span>
-        <input type="text" value={t} className={(t === 'Title not Defined!' ? 'title-red' : 'title-white')} readOnly/>
+        <input type="text" onChange={(e) => changeTitle(e,index)} value={title || note[index].title} className='title-text' readOnly/>
       </div>
       <div className='main2-card-content'>
         <span>
           Content:
         </span>
-        <textarea value={c} readOnly></textarea>
+        <textarea onChange={(e) => changeContent(e,index)} className='content-text' value={content || note[index].content} readOnly></textarea>
+      </div>
+      <div className="view-buttons-container">
+        <button onClick={editNote} className='edit-button'>Edit</button>
+        <button onClick={()=> saveNote(index)} className='save-button'>Save</button>
+        <button onClick={()=> deleteNote(index)} className='delete-button'>Delete</button>
       </div>
     </div>);
   }
