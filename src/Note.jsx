@@ -24,29 +24,40 @@ function Note(){
   }
 
   let addNote = () =>{
-    document.querySelector('.add-note').style.display = 'none';
-    document.querySelector('.main2').style.filter = 'blur(0px)';
+    let d = true;
     let noteTitle = document.querySelector('.note-title').value;
     let noteContent = document.querySelector('.note-content').value;
+    if(noteContent === ''){
+      alert('Content cannot be empty!');
+      return;
+    }
+    if(noteTitle === ''){
+      noteTitle = 'Title not Defined!';
+      d = false;
+    }
+    document.querySelector('.add-note').style.display = 'none';
+    document.querySelector('.main2').style.filter = 'blur(0px)';
     let noteAddTime = new Date;
     noteAddTime = formatTime(noteAddTime);
     let contentObj = {
       title: noteTitle,
       content: noteContent,
       time: noteAddTime,
+      titleDefined: d,
     };
     setNote(n => [...n, contentObj]);
     document.querySelector('.note-title').value = '';
     document.querySelector('.note-content').value = '';
   }
+
   let noteList;
   if(note.length>0){
     noteList = note.map((e,i) =>{
       return(
-        <div className='card' key={i}>
-          <div className='title'>TITLE: {e.title}</div>
-          <div className='content'>{e.content}</div>
-          <div className='time'>Date : {e.time}</div>
+        <div className={`card card${i}`} key={i} onClick={() => viewCard(i)}>
+          <div className={`title title${i}`}><span>TITLE: </span><p className={e.titleDefined? 'title-white' : 'title-red'}>{e.title}</p></div>
+          <div className={`content content${i}`}><span>Content: </span>{e.content}</div>
+          <div className={`time time${i}`}>Date : {e.time}</div>
         </div>
       );
     })
@@ -58,7 +69,10 @@ function Note(){
    return (
     <>
       <div className='add-note'>
-        <input className='note-title' type="text" placeholder="Enter the title..."/>
+        <div className='note-title-holder'>
+          <label htmlFor="note-title">Title:</label>
+          <input className='note-title' id='note-title' type="text" placeholder="Enter the title..."/>
+        </div>
         <textarea className='note-content' placeholder="Enter your note.."></textarea>
         <div className='add-note-buttons'>
           <button onClick={addNote} className='add'>Add</button>
@@ -68,11 +82,16 @@ function Note(){
       <div className='main-body'>
         <div className='main1'>
           <button onClick={addNotePopUp}>Add Note</button>
+          <div className='cards'>
+            <div className='cards-title'>
+              Notes:
+            </div>
+            <div className='cards-holder'>
+              {noteList}
+            </div>
+          </div>
         </div>
         <div className='main2'>
-          <div className='cards'>
-            {noteList}
-          </div>
         </div>
       </div>
     </>
