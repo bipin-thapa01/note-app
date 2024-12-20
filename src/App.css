@@ -191,7 +191,7 @@ nav a{
   color: gray;
 }
 
-.card .title p{
+.card .title p, .card .content p{
   display: inline;
 }
 
@@ -213,4 +213,58 @@ nav a{
 .main2{
   width: calc(100vw - 400px);
   border-left: 1px solid white;
+}
+
+.main2-card{
+  padding: 10px 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main2-card-title{
+  display: flex;
+  column-gap: 20px;
+  border-bottom: 2px solid gray;
+  padding: 0 0 5px 20px;
+}
+
+.main2-card-title span{
+  font-size: 40px;
+  color: gray;
+}
+
+.main2-card-title input{
+  height: 40px;
+  background-color: transparent;
+  border: 0;
+  color: white;
+  font-size: 40px;
+  outline: none;
+}
+
+.main2-card-content{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 0 10px;
+}
+
+.main2-card-content span{
+  font-size: 24px;
+  color: gray;
+}
+
+.main2-card-content textarea{
+  resize: none;
+  background-color: transparent;
+  width: calc(100vw - 400px - 20px);
+  height: calc(100vh - 230px);
+  color: white;
+  font-size: 24px;
+  outline: none;
+  border: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

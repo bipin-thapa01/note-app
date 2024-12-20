@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 function Note(){
   let [note, setNote] = useState([]);
+  let [view, setView] = useState();
 
   let addNotePopUp = () =>{
     document.querySelector('.add-note').style.display = 'flex';
@@ -22,7 +23,6 @@ function Note(){
     date = date < 10 ? '0'+ date : date;
     return (year + '/' + month + '/' + date);
   }
-
   let addNote = () =>{
     let d = true;
     let noteTitle = document.querySelector('.note-title').value;
@@ -50,13 +50,34 @@ function Note(){
     document.querySelector('.note-content').value = '';
   }
 
+  let viewCard = (index) =>{
+    console.log(`hi${index}`);
+    let t = document.querySelector(`.title${index} p`).innerText;
+    let c = document.querySelector(`.content${index} p`).innerText;
+    setView(<div className='main2-card'>
+      <div className='main2-card-title'>
+        <span>
+          Title:
+        </span>
+        <input type="text" value={t} className={(t === 'Title not Defined!' ? 'title-red' : 'title-white')} readOnly/>
+      </div>
+      <div className='main2-card-content'>
+        <span>
+          Content:
+        </span>
+        <textarea value={c} readOnly></textarea>
+      </div>
+    </div>);
+  }
+
   let noteList;
   if(note.length>0){
     noteList = note.map((e,i) =>{
       return(
-        <div className={`card card${i}`} key={i} onClick={() => viewCard(i)}>
+        <div key={i} onClick={() => viewCard(i)} className={`card card${i}`}>
           <div className={`title title${i}`}><span>TITLE: </span><p className={e.titleDefined? 'title-white' : 'title-red'}>{e.title}</p></div>
-          <div className={`content content${i}`}><span>Content: </span>{e.content}</div>
+          <div className={`content content${i}`}><span>Content: </span> <p>  {e.content}
+            </p></div>
           <div className={`time time${i}`}>Date : {e.time}</div>
         </div>
       );
@@ -92,6 +113,7 @@ function Note(){
           </div>
         </div>
         <div className='main2'>
+          {view}
         </div>
       </div>
     </>
