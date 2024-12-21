@@ -65,14 +65,25 @@ function Note(){
   }
 
   let saveNote = (index) =>{
+    let newNote = [...note];
+    newNote[index].title = document.querySelector('.title-text').value;
+    newNote[index].content = document.querySelector('.content-text').value;
+    if(newNote[index].title === ''){
+      newNote[index].title = 'Title not Defined!';
+      newNote[index].titleDefined = false;
+    }
+    else{
+      newNote[index].titleDefined = true;
+    }
+    if(newNote[index].content === ''){
+      alert('Content cannot be empty!');
+      return;
+    }
+    setNote(newNote);
     document.querySelector(`.edit-button`).style.display = 'block';
     document.querySelector(`.save-button`).style.display = 'none';
     document.querySelector(`.title-text`).readOnly = true;
     document.querySelector(`.content-text`).readOnly = true;
-    let newNote = [...note];
-    newNote[index].title = document.querySelector('.title-text').value;
-    newNote[index].content = document.querySelector('.content-text').value;
-    setNote(newNote);
   }
 
   let deleteNote = (index) =>{
@@ -85,6 +96,7 @@ function Note(){
 
   let changeTitle = (e,index) =>{
     title = e.target.value;
+    console.log(title);
     viewCard(index);
   }
 
@@ -93,19 +105,26 @@ function Note(){
     viewCard(index);
   }
 
+
+  let editTime = 0;
   let viewCard = (index) =>{
+    if(editTime === 0){
+      title = note[index].title;
+      content = note[index].content;
+      editTime = 1;
+    }
     setView(<div className='main2-card'>
       <div className='main2-card-title'>
         <span>
           Title:
         </span>
-        <input type="text" onChange={(e) => changeTitle(e,index)} value={title || note[index].title} className='title-text' readOnly/>
+        <input type="text" onChange={(e) => changeTitle(e,index)} value={title} className='title-text' readOnly/>
       </div>
       <div className='main2-card-content'>
         <span>
           Content:
         </span>
-        <textarea onChange={(e) => changeContent(e,index)} className='content-text' value={content || note[index].content} readOnly></textarea>
+        <textarea onChange={(e) => changeContent(e,index)} className='content-text' value={content} readOnly></textarea>
       </div>
       <div className="view-buttons-container">
         <button onClick={editNote} className='edit-button'>Edit</button>
