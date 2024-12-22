@@ -110,6 +110,10 @@ function Note(){
 
   let editTime = 0;
   let viewCard = (index) =>{
+    if(window.innerWidth < 650){
+      document.querySelector('.main1').style.display = 'none';
+      document.querySelector('.main2').style.display = 'block';
+    }
     if(editTime === 0){
       title = note[index].title;
       content = note[index].content;

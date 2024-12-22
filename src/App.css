@@ -124,7 +124,7 @@ nav a{
 
 .main1{
   width: 400px;
-  height: 100%;
+  height: calc(100vh - 60px);
   border: 1px solid white;
   display: flex;
   flex-direction: column;
@@ -379,6 +379,10 @@ nav a{
     height: 500px;
   }
 
+  .main-body{
+    height: calc(100vh - 100px);
+  }
+
   .note-title-holder{
     width: 580px;
     padding-left: 10px;
@@ -398,5 +402,60 @@ nav a{
   
   .add-note-buttons button{
     height: 40px;
+  }
+}
+
+@media (max-width: 735px){
+  .main1{
+    width: 200px;
+  }
+
+  .main1 button{
+    height: 45px;
+  }
+
+  .cards-holder .card{
+    height: 80px;
+  }
+
+  .main2{
+    width: calc(100vw - 200px);
+  }
+
+  .main2-card-content textarea{
+    width: calc(100vw - 200px - 20px);
+  }
+}
+
+@media (max-width: 650px){
+  .add-note{
+    margin-top: 70px;
+    margin-left: calc(50vw - 250px);
+    width: 500px;
+  }
+
+  .note-title-holder{
+    width: 490px;
+  }
+
+  .note-content{
+    width: 490px;
+    height: 370px;
+    margin: 0 0 0 1px;
+  }
+
+  .add-note-buttons{
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    column-gap: 20px;
+  }
+
+  .main1{
+    width: 100vw;
+  }
+
+  .main2{
+    display: none;
   }
 }
