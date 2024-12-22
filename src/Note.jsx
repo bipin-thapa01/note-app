@@ -68,6 +68,8 @@ function Note(){
     let newNote = [...note];
     newNote[index].title = document.querySelector('.title-text').value;
     newNote[index].content = document.querySelector('.content-text').value;
+    let newDate = new Date;
+    newNote[index].time = formatTime(newDate); 
     if(newNote[index].title === ''){
       newNote[index].title = 'Title not Defined!';
       newNote[index].titleDefined = false;

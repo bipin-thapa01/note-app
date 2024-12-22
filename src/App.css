@@ -30,6 +30,12 @@ nav a{
   height: 30px;
   cursor: pointer;
   font-size: 20px;
+  transform-origin: center;
+  transition: transform 0.4s ease-in;
+}
+
+.nav-button:hover{
+  transform: rotateZ(90deg);
 }
 
 .add-note{
@@ -118,6 +124,8 @@ nav a{
 
 .main1{
   width: 400px;
+  height: 100%;
+  border: 1px solid white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,7 +134,7 @@ nav a{
 }
 
 .main1 button{
-  width: 400px;
+  width: 100%;
   height: 50px;
   font-size: 30px;
   text-align: center;
@@ -142,13 +150,14 @@ nav a{
 }
 
 .main1 .empty-note{
+  width: 100%;
   text-align: center;
   color: rgb(168, 168, 255);
 }
 
 .main1 .cards{
   border-top: 2px solid gray;
-  width: 400px;
+  width: 100%;
   height: calc(100vh - 47px - 75px);
   border: 2x solid white;
   display: flex;
@@ -222,7 +231,6 @@ nav a{
 
 .main2{
   width: calc(100vw - 400px);
-  border-left: 1px solid white;
 }
 
 .main2 .empty-container{
@@ -327,4 +335,68 @@ nav a{
 
 .view-buttons-container .delete-button:hover{
   background-color: rgb(77, 0, 0);
+}
+
+@media (max-width: 1200px){
+  .main1{
+    width: 300px;
+  }
+
+  .main1 button{
+    font-size: 20px;
+  }
+
+  .cards .cards-title{
+    font-size: 20px;
+  }
+
+  .card .title{
+    font-size: 15px;
+  }
+
+  .card .content{
+    font-size: 13px;
+  }
+
+  .main2{
+    width: calc(100vw - 300px);
+  }
+
+  .main2 .empty-container{
+    font-size: 25px;
+  }
+
+  .main2-card-content textarea{
+    width: calc(100vw - 300px - 20px);
+  }
+}
+
+@media (max-width: 850px){
+  .add-note{
+    margin-top: 70px;
+    margin-left: calc(50vw - 300px);
+    width: 600px;
+    height: 500px;
+  }
+
+  .note-title-holder{
+    width: 580px;
+    padding-left: 10px;
+  }
+
+  .note-content{
+    width: 580px;
+    height: 370px;
+    margin: 0 7px;
+  }
+
+  .add-note-buttons{
+    margin-top: 9px;
+    margin-left: 400px;
+    column-gap: 20px;
+  }
+  
+  .add-note-buttons button{
+    height: 40px;
+  }
 }
