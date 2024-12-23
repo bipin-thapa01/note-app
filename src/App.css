@@ -8,6 +8,7 @@ body{
 
 nav{
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   padding: 0px 30px;
@@ -39,6 +40,21 @@ nav a{
 
 .nav-button:hover{
   transform: rotateZ(90deg);
+}
+
+.nav-button-option{
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: hsla(228, 22%, 18%, 0.965);
+}
+
+.nav-button-holder:hover .nav-button-option{
+  display: block;
 }
 
 .add-note{
