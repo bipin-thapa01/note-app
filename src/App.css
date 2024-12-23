@@ -22,6 +22,9 @@ nav a{
 }
 
 .nav-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background-color: transparent;
   color: white;
@@ -163,7 +166,8 @@ nav a{
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .cards .cards-title{
@@ -429,19 +433,19 @@ nav a{
 
 @media (max-width: 650px){
   .add-note{
-    margin-top: 70px;
-    margin-left: calc(50vw - 250px);
-    width: 500px;
+    margin-top: 20px;
+    margin-left: calc(50vw - 230px);
+    width: 455px;
   }
 
   .note-title-holder{
-    width: 490px;
+    width: 440px;
   }
 
   .note-content{
-    width: 490px;
+    width: 445px;
     height: 370px;
-    margin: 0 0 0 1px;
+    margin: 0 0 0 2px;
   }
 
   .add-note-buttons{
@@ -457,5 +461,27 @@ nav a{
 
   .main2{
     display: none;
+    width: 100vw;
+  }
+
+  .main2-card-content textarea{
+    width: calc(100vw);
+  }
+}
+
+@media (max-width: 450px){
+  .add-note{
+    margin-left: calc(50vw - 155px);
+    width: 310px;
+  }
+
+  .note-title-holder{
+    width: 300px;
+  }
+
+  .note-content{
+    width: 300px;
+    height: 370px;
+    margin: 0 0 0 2px;
   }
 }
