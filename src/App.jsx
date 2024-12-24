@@ -1,5 +1,5 @@
-import Nav from './Nav.jsx'
-import Note from './Note.jsx'
+import Nav from './Nav.jsx';
+import Note from './Note.jsx';
 
 function App() {
   return (
