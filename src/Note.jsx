@@ -162,7 +162,7 @@ function Note(){
       <div className='add-note'>
         <div className='note-title-holder'>
           <label htmlFor="note-title">Title:</label>
-          <input className='note-title' id='note-title' type="text" placeholder="Enter the title..."/>
+          <input className='note-title' id='note-title' type="text" placeholder="Enter the title..." autoComplete='off'/>
         </div>
         <textarea className='note-content' placeholder="Enter your note.."></textarea>
         <div className='add-note-buttons'>

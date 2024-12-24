@@ -264,6 +264,7 @@ nav a{
 .main2{
   width: calc(100vw - 400px);
   overflow: hidden;
+  border: 0;
 }
 
 .main2 .empty-container{
@@ -274,6 +275,8 @@ nav a{
   padding: 10px 0 0 0;
   flex-direction: column;
   display: flex;
+  position: relative;
+  height: 100%;
 }
 
 .main2-card-title{
@@ -301,8 +304,7 @@ nav a{
 .main2-card-content{
   display: flex;
   flex-direction: column;
-  padding: 10px 0 0 10px;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid white;
 }
 
 .main2-card-content span{
@@ -315,6 +317,7 @@ nav a{
   background-color: transparent;
   width: calc(100vw - 400px - 20px);
   height: calc(100vh - 230px);
+  padding: 0 10px 0 10px;
   color: white;
   font-size: 24px;
   outline: none;
@@ -332,6 +335,9 @@ nav a{
   height: 70px;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: calc(50% - 60px - 20px);
 }
 
 .view-buttons-container button{
@@ -491,11 +497,16 @@ nav a{
   .main2{
     display: none;
     width: 100vw;
-    height: calc(100vh - 60px);
+  }
+
+  .main2-card-content{
+    border: 0;
   }
 
   .main2-card-content textarea{
-    width: calc(95vw);
+    width: 100vw;
+    height: 64vh;
+    border-bottom: 2px solid gray;
   }
 }
 
